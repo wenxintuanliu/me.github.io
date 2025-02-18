@@ -1,0 +1,40 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.0
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build
+
+      - name: Add SSH key to ssh-agent
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add SSH host key to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H 47.108.91.151 >> ~/.ssh/known_hosts
+
+      - name: Deploy to server
+        run: |
+          ssh chunfengfusu1@47.108.91.151 "cd /var/www/me.github.io && git pull && bundle install && bundle exec jekyll build" > deploy.log 2>&1
+          cat deploy.log
