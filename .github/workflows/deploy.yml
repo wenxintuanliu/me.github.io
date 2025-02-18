@@ -15,15 +15,10 @@ jobs:
 
       - name: Set up SSH key
         run: |
-          # 将私钥保存为文件
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
-          chmod 600 private_key  # 设置私钥文件的权限
-
-          # 启动 ssh-agent 并添加私钥
+          chmod 600 private_key
           eval $(ssh-agent -s)
           ssh-add private_key
-
-          # 删除私钥文件，避免泄露
           rm private_key
 
       - name: Add SSH host key to known_hosts
@@ -34,11 +29,16 @@ jobs:
       - name: Deploy to server
         run: |
           ssh chunfengfusu1@47.108.91.151 "
+            set -e
             cd /var/www/me.github.io &&
-            git pull origin master &&
+            git stash save --keep-index || true
+            git pull origin master
+            git stash pop || true
             bundle install &&
             bundle exec jekyll build &&
+            sudo chmod -R 755 /var/www/html/ &&
+            sudo chown -R chunfengfusu1:chunfengfusu1 /var/www/html/ &&
             cp -r _site/* /var/www/html/
           " > deploy.log 2>&1
           scp chunfengfusu1@47.108.91.151:/var/www/me.github.io/deploy.log ./deploy.log
-          cat deploy.log
+          cat deploy.log || true
