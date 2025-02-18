@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -20,6 +21,7 @@ jobs:
       - name: Deploy to server
         run: |
           ssh chunfengfusu1@47.108.91.151 "
+            set -e
             cd /var/www/me.github.io &&
             git pull origin master &&
             bundle install &&
