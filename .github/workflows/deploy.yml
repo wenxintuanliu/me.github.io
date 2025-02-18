@@ -43,6 +43,5 @@ jobs:
             bundle exec jekyll build &&
             cp -r _site/* /var/www/html/
           " > deploy.log 2>&1
-        run: |
           scp chunfengfusu1@47.108.91.151:/var/www/me.github.io/deploy.log ./deploy.log
           cat deploy.log
