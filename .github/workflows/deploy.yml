@@ -20,7 +20,7 @@ jobs:
 
       - name: Deploy to server
         run: |
-          ssh root@47.108.91.151 "
+          ssh -o StrictHostKeyChecking=no root@47.108.91.151 "
             set -e
             cd /var/www/me.github.io &&
             git pull origin master &&
