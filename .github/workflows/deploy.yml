@@ -39,6 +39,4 @@ jobs:
             sudo chmod -R 755 /var/www/html/ &&
             sudo chown -R chunfengfusu1:chunfengfusu1 /var/www/html/ &&
             cp -r _site/* /var/www/html/
-          " > deploy.log 2>&1
-          scp chunfengfusu1@47.108.91.151:/var/www/me.github.io/deploy.log ./deploy.log
-          cat deploy.log || true
+          "
