@@ -3,12 +3,11 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -18,22 +17,12 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Add SSH host key to known_hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -H 47.108.91.151 >> ~/.ssh/known_hosts
-
       - name: Deploy to server
         run: |
-          ssh -v chunfengfusu1@47.108.91.151 "
-            set -e
+          ssh your_username@your_server_ip "
             cd /var/www/me.github.io &&
-            git stash save --keep-index || true &&
-            git pull origin master &&
-            git stash pop || true &&
+            git pull origin main &&
             bundle install &&
             bundle exec jekyll build &&
-            sudo chmod -R 755 /var/www/html/ &&
-            sudo chown -R chunfengfusu1:chunfengfusu1 /var/www/html/ &&
-            cp -r _site/* /var/www/html/
+            sudo cp -r _site/* /var/www/html/
           "
