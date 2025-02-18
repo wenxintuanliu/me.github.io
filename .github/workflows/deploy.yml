@@ -21,7 +21,7 @@ jobs:
         run: |
           ssh chunfengfusu1@47.108.91.151 "
             cd /var/www/me.github.io &&
-            git pull origin main &&
+            git pull origin master &&
             bundle install &&
             bundle exec jekyll build &&
             sudo cp -r _site/* /var/www/html/
