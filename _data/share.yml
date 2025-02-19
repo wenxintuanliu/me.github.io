@@ -4,11 +4,11 @@
 platforms:
   - type: qq
     icon: "fa-brands fa-qq"
-    link: "3403208087@qq.com"
+    link: "mailto:3403208087@qq.com"
 
   - type: email
     icon: "fa-solid fa-square-envelope"
-    link: "2023012685@nwafu.edu.cn"
+    link: "mailto:2023012685@nwafu.edu.cn"
 
   - type: github
     icon: "fa-brands fa-square-github"
