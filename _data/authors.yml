@@ -7,11 +7,12 @@
 # -------------------------------------
 
 cotes:
-  name: Cotes Chung
-  twitter: cotes2020
-  url: https://github.com/cotes2020/
-
-sille_bille:
-  name: Dinesh Prasanth Moluguwan Krishnamoorthy
-  twitter: dinesh_MKD
-  url: https://github.com/SilleBille/
+  name: Chunfeng Fusu
+  url: https://github.com/wenxintuanliu/
+  bio: Just a student"
+  location: "Beijing, China"
+  avatar: "/assets/img/favicons/android-chrome-192x192.png"
+  website: "https://www.chunfengfusu.cloud"
+  skills:
+    - Slip up
+    - Ping-pong

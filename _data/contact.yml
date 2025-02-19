@@ -3,11 +3,11 @@
 - type: github
   icon: "fab fa-github"
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
+- type: qq
+  icon: "fa-brands fa-qq"
 
 - type: email
-  icon: "fas fa-envelope"
+  icon: "fa-duotone fa-regular fa-envelope"
   noblank: true # open link in current tab
 
 - type: rss

@@ -89,7 +89,7 @@ pageviews:
 #     dark — Use the dark color scheme
 #
 theme_mode:
-  [light | dark]
+  dark
   # [light | dark]
 
 # The CDN endpoint for media resources.
