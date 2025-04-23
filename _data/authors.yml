@@ -6,7 +6,7 @@
 #   url: {homepage_of_author}
 # -------------------------------------
 
-cotes:
+Chunfeng Fusu:
   name: Chunfeng Fusu
   url: https://github.com/wenxintuanliu/
   bio: Just a student"
@@ -16,3 +16,14 @@ cotes:
   skills:
     - Slip up
     - Ping-pong
+
+Chaosheng Bihai:
+  name: Chaosheng Bihai
+  url: https://github.com/wenxintuanliu/
+  bio: Just a boy"
+  location: "Shanxi, China"
+  avatar: "/assets/img/favicons/android-chrome-192x192.png"
+  website: "https://www.chunfengfusu.cloud"
+  skills:
+    - slacking
+    - fly
