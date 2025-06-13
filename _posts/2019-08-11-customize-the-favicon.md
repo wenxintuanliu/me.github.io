@@ -1,6 +1,6 @@
 ---
 title: 更新图标方法
-author: Chaosheng Bihai
+author: Guanfang
 date: 2019-08-11 00:34:00 +0800
 categories: [Blogging, Tutorial]
 tags: [favicon]

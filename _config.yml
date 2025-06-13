@@ -16,7 +16,7 @@ timezone: Asia/Shanghai
 
 title: My Simple Blog #| CHUNFENG FUSU. # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the subtitle
+tagline: 这是我的个人博客 # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
@@ -149,7 +149,7 @@ pwa:
     deny_paths:
       # - "/example"  # URLs match `<SITE_URL>/example/*` will not be cached by the PWA
 
-paginate: 20
+paginate: 4
 
 # The base URL of your site
 baseurl: ""
