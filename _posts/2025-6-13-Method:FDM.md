@@ -21,16 +21,19 @@ pin: true
 **控制方程**（无量纲形式[见《FDM:量纲与无量纲》]({% post_url 2025-6-13-FDM:量纲与无量纲 %})，雷诺数 \(Re = \frac{UL}{\nu}\)）：
 
 - **x-动量方程**:
+  
   $$
   \frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} = -\frac{\partial p}{\partial x} + \frac{1}{Re}\left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}\right)
   $$
 
 - **y-动量方程**:
+  
   $$
   \frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} = -\frac{\partial p}{\partial y} + \frac{1}{Re}\left(\frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2}\right)
   $$
 
 - **连续性方程**:
+  
   $$
   \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0
   $$
@@ -49,15 +52,19 @@ pin: true
 使用有限差分近似替换偏导数，[具体差分推导见《FDM:差分推导》]({% post_url 2025-6-13-FDM:差分推导 %})。
 
 - **时间导数** (一阶向前差分):
+  
   $$
   \frac{\partial u}{\partial t} \approx \frac{u_{i,j}^{n+1} - u_{i,j}^{n}}{\Delta t}
   $$
+  
   其中上标 $n$ 表示时间层，$n+1$ 表示下一个时间层，$\Delta t$ 是时间步长。
 
 - **空间一阶导数** (中心差分):
+  
   $$
   \frac{\partial u}{\partial x} \Big|_{i,j} \approx \frac{u_{i+1,j} - u_{i-1,j}}{2\Delta x}
   $$
+
   $$
   \frac{\partial u}{\partial y} \Big|_{i,j} \approx \frac{u_{i,j+1} - u_{i,j-1}}{2\Delta y}
   $$    
@@ -65,9 +72,11 @@ pin: true
 注意：对流项有时会使用迎风格式以增强稳定性
 
 - **空间二阶导数** (中心差分):
+  
   $$
   \frac{\partial^2 u}{\partial x^2} \Big|_{i,j} \approx \frac{u_{i+1,j} - 2u_{i,j} + u_{i-1,j}}{(\Delta x)^2}
   $$
+
   $$
   \frac{\partial^2 u}{\partial y^2} \Big|_{i,j} \approx \frac{u_{i,j+1} - 2u_{i,j} + u_{i,j-1}}{(\Delta y)^2}
   $$
@@ -83,12 +92,15 @@ pin: true
 首先，忽略压力梯度项，或者使用上一时间步的压力，求解一个中间速度场 $(u^*, v^*)$：
 
 - x-动量:
+  
   $$
   \frac{u_{i,j}^* - u_{i,j}^n}{\Delta t} = - \left( u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} \right)_{i,j}^n + \frac{1}{Re}\left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}\right)_{i,j}^n
   $$
+
   (右端项使用 $n$ 时刻的值进行显式计算)
 
 - y-动量:
+  
   $$
   \frac{v_{i,j}^* - v_{i,j}^n}{\Delta t} = - \left( u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} \right)_{i,j}^n + \frac{1}{Re}\left(\frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2}\right)_{i,j}^n
   $$
@@ -100,25 +112,31 @@ pin: true
 
 中间速度场 $(u^*, v^*)$ 通常不满足连续性方程。通过引入压力修正[见《FDM:压力泊松方程》]({% post_url 2025-6-13-FDM:压力泊松方程 %})，使得校正后的速度场 $(u^{n+1}, v^{n+1})$ 满足连续性。
 速度校正公式为：
+
 $$
 \frac{u_{i,j}^{n+1} - u_{i,j}^*}{\Delta t} = -\frac{\partial p^{n+1}}{\partial x} \Big|_{i,j}
 $$
+
 $$
 \frac{v_{i,j}^{n+1} - v_{i,j}^*}{\Delta t} = -\frac{\partial p^{n+1}}{\partial y} \Big|_{i,j}
 $$
 
 将校正后的速度代入离散化的连续性方程 $\frac{\partial u^{n+1}}{\partial x} + \frac{\partial v^{n+1}}{\partial y} = 0$，得到压力泊松方程：
+
 $$
 \left( \frac{\partial^2 p}{\partial x^2} + \frac{\partial^2 p}{\partial y^2} \right)^{n+1}_{i,j} = \frac{1}{\Delta t} \left( \frac{\partial u^*}{\partial x} + \frac{\partial v^*}{\partial y} \right)_{i,j}
 $$
+
 右端项是中间速度场的散度，作为源项。**这个椭圆型偏微分方程**需要求解得到 $p^{n+1}$。
 
 **步骤 4.3: 速度校正**
 
 得到新的压力场 $p^{n+1}$ 后，用它来校正中间速度场，得到 $n+1$ 时刻的速度场：
+
 $$
 u_{i,j}^{n+1} = u_{i,j}^* - \Delta t \left( \frac{p_{i+1,j}^{n+1} - p_{i-1,j}^{n+1}}{2\Delta x} \right)
 $$
+
 $$
 v_{i,j}^{n+1} = v_{i,j}^* - \Delta t \left( \frac{p_{i,j+1}^{n+1} - p_{i,j-1}^{n+1}}{2\Delta y} \right)
 $$
@@ -126,6 +144,7 @@ $$
 ### 5. 边界条件的应用
 
 - **速度边界条件**:
+  
     - 顶盖 ($y=L_y$): $u = U_{lid}$, $v = 0$
     - 底壁 ($y=0$): $u = 0$, $v = 0$
     - 左壁 ($x=0$): $u = 0$, $v = 0$
@@ -168,12 +187,15 @@ $$
 ### 9. 数值稳定性与精度
 
 - **时间步长 $\Delta t$** 的选择受CFL (Courant-Friedrichs-Lewy) 条件和扩散数条件的限制，以保证显式格式的稳定性。
+  
   $$
   CFL = \max\left(\frac{|u|\Delta t}{\Delta x}, \frac{|v|\Delta t}{\Delta y}\right) \le C_{max} \quad (\text{通常 } C_{max} \approx 1)
   $$
+
   $$
   D = \frac{\nu \Delta t}{(\Delta x)^2} + \frac{\nu \Delta t}{(\Delta y)^2} \le D_{max} \quad (\text{通常 } D_{max} \approx 0.25 - 0.5 \text{ for explicit schemes})
   $$
+
 - **网格雷诺数**: $Re_{\Delta x} = \frac{u \Delta x}{\nu}$。如果过大，中心差分对流项可能导致非物理振荡，此时可能需要迎风格式或更细的网格。
 - **精度**: 通常为 $\mathcal{O}(\Delta t, \Delta x^2, \Delta y^2)$，取决于所用差分格式的阶数。
 
