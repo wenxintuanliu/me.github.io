@@ -87,6 +87,13 @@ blockquote {
   @include mx.prompt('info', '\f06a', $rotate: 180);
   @include mx.prompt('warning', '\f06a');
   @include mx.prompt('danger', '\f071');
+  @include mx.prompt('success', '\f058'); // fa-check-circle，表示成功
+  @include mx.prompt(
+    'question',
+    '\f128',
+    $fa-style: 'light',
+    $rotate: 45
+  ); // fa-question-circle，浅色风格，旋转45度
 }
 
 kbd {
