@@ -89,7 +89,9 @@ pageviews:
 #     dark — Use the dark color scheme
 #
 theme_mode:
+  #varivant
 
+  #vibrant # [vibrant | light | dark]
   # [light | dark]
 
 # The CDN endpoint for media resources.
@@ -97,7 +99,7 @@ theme_mode:
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-cdn: "https://www.chunfengfusu.cloud"
+cdn: #"https://www.chunfengfusu.cloud"
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "/picture/avatar.jpeg"

@@ -1,10 +1,12 @@
 ---
 ---
 
-@use 'main
+@use 'main';
 {%- if jekyll.environment == 'production' -%}
-  .bundle
+  .bundle {
+    /* 生产环境的样式 */
+  }
 {%- endif -%}
-';
+
 
 /* append your custom style below */

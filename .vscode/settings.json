@@ -26,5 +26,10 @@
   // Run tasks in macOS
   "terminal.integrated.profiles.osx": {
     "zsh": { "path": "/bin/zsh", "args": ["-l", "-i"] }
+  },
+  "remote.extensionKind": {
+    "GitHub.copilot": ["ui"],
+    "GitHub.copilot-chat": ["ui"],
+    "pub.name": ["ui"]
   }
 }

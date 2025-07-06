@@ -3,7 +3,7 @@
  */
 
 const MERMAID = 'mermaid';
-const themeMapper = Theme.getThemeMapper('default', 'dark');
+const themeMapper = Theme.getThemeMapper('default', 'dark', 'forest'); // 'forest' 是 Mermaid 的另一个内置主题
 
 function refreshTheme(event) {
   if (event.source === window && event.data && event.data.id === Theme.ID) {

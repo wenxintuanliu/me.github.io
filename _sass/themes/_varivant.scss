@@ -1,0 +1,307 @@
+@mixin styles {
+  color-scheme: varivant; /* 设置为 vibrant */
+
+  /* Framework color */
+  --main-bg: #f0f4f8; /* Soft light background */
+  --mask-bg: #e0e7ef; /* Light mask background */
+  --main-border-color: #d1d5db; /* Light border color */
+
+  /* Common color */
+  --text-color: #2c3e50; /* Darker text for readability */
+  --text-muted-color: #7f8c8d; /* Muted text color */
+  --text-muted-highlight-color: #95a5a6; /* Highlighted muted text */
+  --heading-color: #2980b9; /* Bright heading color */
+  --label-color: #8e44ad; /* Vibrant label color */
+  --blockquote-border-color: #16a085; /* Blockquote border color */
+  --blockquote-text-color: #34495e; /* Blockquote text color */
+  --link-color: #e67e22; /* Bright link color */
+  --link-underline-color: #d35400; /* Underline color for links */
+  --button-bg: #27ae60; /* Button background color */
+  --btn-border-color: #2ecc71; /* Button border color */
+  --btn-backtotop-color: #ffffff; /* Back to top button text color */
+  --btn-backtotop-border-color: #2ecc71; /* Back to top button border color */
+  --card-header-bg: #3498db; /* Card header background color */
+  --checkbox-color: #f39c12; /* Checkbox color */
+  --checkbox-checked-color: #2ecc71; /* Checked checkbox color */
+  --img-bg: radial-gradient(
+    circle,
+    #ecf0f1 0%,
+    #bdc3c7 100%
+  ); /* Image background */
+
+  --shimmer-bg: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(236, 240, 241, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  /* Sidebar */
+  --site-title-color: #2980b9; /* Sidebar title color */
+  --site-subtitle-color: #8e44ad; /* Sidebar subtitle color */
+  --sidebar-bg: #ecf0f1; /* Sidebar background */
+  --sidebar-border-color: #bdc3c7; /* Sidebar border color */
+  --sidebar-muted-color: #95a5a6; /* Muted sidebar text color */
+  --sidebar-active-color: #2980b9; /* Active sidebar item color */
+  --sidebar-hover-bg: #d1e7fd; /* Sidebar hover background */
+  --sidebar-btn-bg: #3498db; /* Sidebar button background */
+  --sidebar-btn-color: #ffffff; /* Sidebar button text color */
+  --avatar-border-color: #2c3e50; /* Avatar border color */
+
+  /* Topbar */
+  --topbar-bg: rgba(255, 255, 255, 0.9); /* Topbar background */
+  --topbar-text-color: #34495e; /* Topbar text color */
+  --search-border-color: #bdc3c7; /* Search input border color */
+  --search-icon-color: #7f8c8d; /* Search icon color */
+  --input-focus-border-color: #2980b9; /* Input focus border color */
+
+  /* Home page */
+  --post-list-text-color: #34495e; /* Post list text color */
+  --btn-patinator-text-color: #2980b9; /* Pagination button text color */
+  --btn-paginator-hover-color: #2ecc71; /* Pagination button hover color */
+
+  /* Posts */
+  --toc-highlight: #e67e22; /* Table of contents highlight color */
+  --toc-popup-border-color: #95a5a6; /* TOC popup border color */
+  --tag-hover: #16a085; /* Tag hover color */
+  --tb-odd-bg: #f9f9f9; /* Odd rows of the posts' table */
+  --tb-even-bg: #f0f4f8; /* Even rows of the posts' table */
+  --tb-border-color: #d1d5db; /* Table border color */
+  --footnote-target-bg: #f1c40f; /* Footnote target background */
+  --btn-share-color: #7f8c8d; /* Share button color */
+  --btn-share-hover-color: #e67e22; /* Share button hover color */
+  --card-bg: #ffffff; /* Card background */
+  --card-hovor-bg: #ecf0f1; /* Card hover background */
+  --card-shadow: rgba(0, 0, 0, 0.1) 0 4px 10px; /* Card shadow */
+  --kbd-wrap-color: #95a5a6; /* Keyboard wrap color */
+  --kbd-text-color: #ffffff; /* Keyboard text color */
+  --kbd-bg-color: #34495e; /* Keyboard background color */
+  --prompt-text-color: rgba(46, 46, 46, 0.85); /* Prompt text color */
+  --prompt-tip-bg: rgba(52, 152, 219, 0.2); /* Prompt tip background */
+  --prompt-tip-icon-color: #2980b9; /* Prompt tip icon color */
+  --prompt-info-bg: rgba(52, 152, 219, 0.1); /* Info prompt background */
+  --prompt-info-icon-color: #0070cb; /* Info icon color */
+  --prompt-warning-bg: rgba(241, 196, 15, 0.2); /* Warning prompt background */
+  --prompt-warning-icon-color: #f39c12; /* Warning icon color */
+  --prompt-danger-bg: rgba(231, 76, 60, 0.2); /* Danger prompt background */
+  --prompt-danger-icon-color: #e74c3c; /* Danger icon color */
+
+  /* Tags */
+  --tag-border: #d1d5db; /* Tag border color */
+  --tag-shadow: rgba(0, 0, 0, 0.1); /* Tag shadow */
+  --dash-color: #bdc3c7; /* Dash color */
+  --search-tag-bg: #ecf0f1; /* Search tag background */
+
+  /* Categories */
+  --categories-border: rgba(0, 0, 0, 0.1); /* Categories border color */
+  --categories-hover-bg: #d1e7fd; /* Categories hover background */
+  --categories-icon-hover-color: #2980b9; /* Categories icon hover color */
+
+  /* Archive */
+  --timeline-node-bg: #3498db; /* Timeline node background */
+  --timeline-color: #7f8c8d; /* Timeline color */
+  --timeline-year-dot-color: #ffffff; /* Timeline year dot color */
+
+  /* Code highlight colors */
+  --language-border-color: #e0e7ef; /* Language border color */
+  --highlight-bg-color: #ffffff; /* Highlight background color */
+  --highlighter-rouge-color: #2c3e50; /* Highlighter color */
+  --highlight-lineno-color: #bdc3c7; /* Line number color */
+  --inline-code-bg: rgba(236, 240, 241, 0.3); /* Inline code background */
+  --code-color: #2c3e50; /* Code color */
+  --code-header-text-color: #34495e; /* Code header text color */
+  --code-header-muted-color: #95a5a6; /* Code header muted color */
+  --code-header-icon-color: #7f8c8d; /* Code header icon color */
+  --clipboard-checked-color: #2ecc71; /* Clipboard checked color */
+  --filepath-text-color: #2980b9; /* File path text color */
+
+  .light {
+    display: none;
+  }
+
+  /* Categories */
+  .categories.card,
+  .list-group-item {
+    background-color: var(--card-bg);
+  }
+
+  .categories {
+    .card-header {
+      background-color: var(--card-header-bg);
+    }
+
+    .list-group-item {
+      border-left: none;
+      border-right: none;
+      padding-left: 2rem;
+      border-color: var(--categories-border);
+
+      &:last-child {
+        border-bottom-color: var(--card-bg);
+      }
+    }
+  }
+
+  #archives li:nth-child(odd) {
+    background-image: linear-gradient(
+      to left,
+      #f0f4f8,
+      #ecf0f1,
+      #ecf0f1,
+      #ecf0f1,
+      #f0f4f8
+    );
+  }
+
+  /* stylelint-disable-next-line selector-id-pattern */
+  #disqus_thread {
+    color-scheme: none;
+  }
+
+  /* --- Syntax highlight theme --- */
+
+  .highlight .gp {
+    color: #87939d;
+  }
+
+  .highlight table td {
+    padding: 5px;
+  }
+
+  .highlight table pre {
+    margin: 0;
+  }
+
+  .highlight,
+  .highlight .w {
+    color: #2c3e50;
+    background-color: #f0f4f8;
+  }
+
+  .highlight .err {
+    color: #f0f4f8;
+    background-color: #e74c3c;
+  }
+
+  .highlight .c,
+  .highlight .ch,
+  .highlight .cd,
+  .highlight .cm,
+  .highlight .cpf,
+  .highlight .c1,
+  .highlight .cs {
+    color: #95a5a6;
+  }
+
+  .highlight .cp {
+    color: #f39c12;
+  }
+
+  .highlight .nt {
+    color: #f39c12;
+  }
+
+  .highlight .o,
+  .highlight .ow {
+    color: #2c3e50;
+  }
+
+  .highlight .p,
+  .highlight .pi {
+    color: #2c3e50;
+  }
+
+  .highlight .gi {
+    color: #27ae60;
+  }
+
+  .highlight .gd {
+    color: #e74c3c;
+    background-color: #f9e8e8;
+  }
+
+  .highlight .gh {
+    color: #3498db;
+    background-color: #f0f4f8;
+    font-weight: bold;
+  }
+
+  .highlight .k,
+  .highlight .kn,
+  .highlight .kp,
+  .highlight .kr,
+  .highlight .kv {
+    color: #8e44ad;
+  }
+
+  .highlight .kc {
+    color: #2980b9;
+  }
+
+  .highlight .kt {
+    color: #2980b9;
+  }
+
+  .highlight .kd {
+    color: #2980b9;
+  }
+
+  .highlight .s,
+  .highlight .sb,
+  .highlight .sc,
+  .highlight .dl,
+  .highlight .sd,
+  .highlight .s2,
+  .highlight .sh,
+  .highlight .sx,
+  .highlight .s1 {
+    color: #27ae60;
+  }
+
+  .highlight .sa {
+    color: #8e44ad;
+  }
+
+  .highlight .sr {
+    color: #16a085;
+  }
+
+  .highlight .si {
+    color: #f39c12;
+  }
+
+  .highlight .se {
+    color: #f39c12;
+  }
+
+  .highlight .nn {
+    color: #f39c12;
+  }
+
+  .highlight .nc {
+    color: #f39c12;
+  }
+
+  .highlight .no {
+    color: #f39c12;
+  }
+
+  .highlight .na {
+    color: #3498db;
+  }
+
+  .highlight .m,
+  .highlight .mb,
+  .highlight .mf,
+  .highlight .mh,
+  .highlight .mi,
+  .highlight .il,
+  .highlight .mo,
+  .highlight .mx {
+    color: #27ae60;
+  }
+
+  .highlight .ss {
+    color: #27ae60;
+  }
+}

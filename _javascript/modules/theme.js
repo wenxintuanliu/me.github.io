@@ -4,6 +4,7 @@
  * To reduce flickering during page load, this script should be loaded synchronously.
  */
 class Theme {
+  static #modes = ['light', 'dark', 'varivant'];
   static #modeKey = 'mode';
   static #modeAttr = 'data-mode';
   static #darkMedia = window.matchMedia('(prefers-color-scheme: dark)');
@@ -15,6 +16,10 @@ class Theme {
 
   static get LIGHT() {
     return 'light';
+  }
+
+  static get VARIVANT() {
+    return 'varivant';
   }
 
   /**
@@ -58,12 +63,14 @@ class Theme {
    * Maps theme modes to provided values
    * @param {string} light Value for light mode
    * @param {string} dark Value for dark mode
+   * @param {string} varivant Value for varivant mode
    * @returns {Object} Mapped values
    */
-  static getThemeMapper(light, dark) {
+  static getThemeMapper(light, dark, varivant) {
     return {
       [this.LIGHT]: light,
-      [this.DARK]: dark
+      [this.DARK]: dark,
+      [this.VARIVANT]: varivant
     };
   }
 
@@ -78,7 +85,6 @@ class Theme {
     this.#darkMedia.addEventListener('change', () => {
       const lastMode = this.#mode;
       this.#clearMode();
-
       if (lastMode !== this.visualState) {
         this.#notify();
       }
@@ -88,23 +94,35 @@ class Theme {
       return;
     }
 
-    if (this.#isDarkMode) {
+    if (this.#mode === this.DARK) {
       this.#setDark();
-    } else {
+    } else if (this.#mode === this.LIGHT) {
       this.#setLight();
+    } else if (this.#mode === this.VARIVANT) {
+      this.#setVarivant();
     }
   }
 
   /**
-   * Flips the current theme mode
+   * Flips the current theme mode (cycles through light, dark, varivant)
    */
   static flip() {
-    if (this.#hasMode) {
-      this.#clearMode();
+    let nextMode;
+    if (!this.#hasMode) {
+      nextMode = this.DARK;
     } else {
-      this.#sysDark ? this.#setLight() : this.#setDark();
+      const idx = this.#modes.indexOf(this.#mode);
+      nextMode = this.#modes[(idx + 1) % this.#modes.length];
     }
+    if (nextMode === this.LIGHT) this.#setLight();
+    else if (nextMode === this.DARK) this.#setDark();
+    else if (nextMode === this.VARIVANT) this.#setVarivant();
     this.#notify();
+  }
+
+  static #setVarivant() {
+    document.documentElement.setAttribute(this.#modeAttr, this.VARIVANT);
+    sessionStorage.setItem(this.#modeKey, this.VARIVANT);
   }
 
   static #setDark() {
